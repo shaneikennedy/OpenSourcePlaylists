@@ -5,7 +5,7 @@ from spotify_init import spotify
 
 
 # Environment variables
-SPOTIFY_USERNAME = os.environ['SPOTIFY_USERNAME']
+OSP_USERNAME = os.environ['OSP_USERNAME']
 
 # Path variables
 base_path = os.getcwd()
@@ -31,7 +31,7 @@ def get_playlist_by_name(playlist_name, playlists):
 
 def get_playlist_songs(client, playlist_id):
     response = client.user_playlist(
-        SPOTIFY_USERNAME,
+        OSP_USERNAME,
         playlist_id,
         fields='tracks')
     if 'items' in response['tracks']:
@@ -55,7 +55,7 @@ def get_songs_to_delete(client, playlist_id, song_uris):
 def add_songs_to_playlist(client, playlist_id, songs):
     if len(songs) > 0:
         client.user_playlist_add_tracks(
-            SPOTIFY_USERNAME,
+            OSP_USERNAME,
             playlist_id,
             songs)
 
@@ -63,7 +63,7 @@ def add_songs_to_playlist(client, playlist_id, songs):
 def remove_songs_from_playlist(client, playlist_id, songs):
     if len(songs) > 0:
         client.user_playlist_remove_all_occurrences_of_tracks(
-            SPOTIFY_USERNAME,
+            OSP_USERNAME,
             playlist_id,
             songs)
 
@@ -71,7 +71,7 @@ def remove_songs_from_playlist(client, playlist_id, songs):
 if __name__ == '__main__':
     # Spotify client setup
     sp = spotify(scope='playlist-modify-public')
-    user_playlists_info = get_user_spotify_playlists(sp, SPOTIFY_USERNAME)
+    user_playlists_info = get_user_spotify_playlists(sp, OSP_USERNAME)
     user_playlists_names = [pl['name'] for pl in user_playlists_info]
     playlist_files = os.listdir(f'{base_path}{playlists_path}')
 
@@ -83,7 +83,7 @@ if __name__ == '__main__':
 
         if not playlist:
             # Create new playlist and get playlist id
-            playlist = sp.user_playlist_create(SPOTIFY_USERNAME, playlist_name)
+            playlist = sp.user_playlist_create(OSP_USERNAME, playlist_name)
 
         playlist_song_uris = [s['uri'] for s in playlist_data[playlist_name]['songs']]
         songs_to_add = get_songs_to_add(sp, playlist['id'], playlist_song_uris)
