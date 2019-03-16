@@ -1,14 +1,10 @@
 import os
 import yaml
-import spotipy
-from spotipy.oauth2 import SpotifyClientCredentials
-import spotipy.util as util
 
-from pprint import pprint
+from spotify_init import spotify
+
 
 # Environment variables
-SPOTIFY_CLIENT_ID = os.environ['SPOTIFY_CLIENT_ID']
-SPOTIFY_CLIENT_SECRET = os.environ['SPOTIFY_CLIENT_SECRET']
 SPOTIFY_USERNAME = os.environ['SPOTIFY_USERNAME']
 
 # Path variables
@@ -74,11 +70,7 @@ def remove_songs_from_playlist(client, playlist_id, songs):
 
 if __name__ == '__main__':
     # Spotify client setup
-    token = util.prompt_for_user_token(
-        username=SPOTIFY_USERNAME,
-        scope='playlist-modify-public playlist-modify-private')
-    sp = spotipy.Spotify(auth=token)
-
+    sp = spotify(scope='playlist-modify-public')
     user_playlists_info = get_user_spotify_playlists(sp, SPOTIFY_USERNAME)
     user_playlists_names = [pl['name'] for pl in user_playlists_info]
     playlist_files = os.listdir(f'{base_path}{playlists_path}')
@@ -98,3 +90,7 @@ if __name__ == '__main__':
         add_songs_to_playlist(sp, playlist['id'], songs_to_add)
         songs_to_delete = get_songs_to_delete(sp, playlist['id'], playlist_song_uris)
         remove_songs_from_playlist(sp, playlist['id'], songs_to_delete)
+
+        # Report actions
+        print(f'Added {len(songs_to_add)} songs: {songs_to_add}')
+        print(f'Removed {len(songs_to_delete)} songs: {songs_to_delete}')
