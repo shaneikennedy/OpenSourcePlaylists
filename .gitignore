@@ -1,6 +1,14 @@
-Compiled source #
+# Compiled source #
 ###################
 *.pyc
+
+# Virtual environment #
+#######################
+env/
+
+# Cache files #
+###############
+.cache-*
 
 # OS generated files #
 ######################
