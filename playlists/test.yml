@@ -1,0 +1,8 @@
+test:
+        songs:
+                - name: 'Forever'
+                  artist: 'Drake etc'
+                  uri: 'spotify:track:6HSqyfGnsHYw9MmIpa9zlZ'
+                - name: 'Oldie'
+                  artist: 'OF'
+                  uri: 'spotify:track:53dkS3h9uTNsWYZTPacnpx'
