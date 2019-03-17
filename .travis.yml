@@ -11,4 +11,10 @@ install:
   - docker build -t osp:latest .
 
 script:
-  - scripts/run_container.sh
+  - "echo No tests for now"
+ 
+deploy:
+  - provider: script
+    script: scripts/run_container.sh
+    on:
+      branch=master
