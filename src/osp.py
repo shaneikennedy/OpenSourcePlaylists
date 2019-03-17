@@ -35,21 +35,23 @@ def get_playlist_songs(client, playlist_id):
         playlist_id,
         fields='tracks')
     if 'items' in response['tracks']:
-        songs = set([item['track']['uri']
-                     for item in response['tracks']['items']])
+        songs = [item['track']
+                     for item in response['tracks']['items']]
     else:
         songs = list()
     return songs
 
 
 def get_songs_to_add(client, playlist_id, song_uris):
-    playlist_song_uris = get_playlist_songs(client, playlist_id)
-    return list(set(song_uris) - playlist_song_uris)
+    playlist_song_uris = [song['uri']
+                          for song in get_playlist_songs(client, playlist_id)]
+    return list(set(song_uris) - set(playlist_song_uris))
 
 
 def get_songs_to_delete(client, playlist_id, song_uris):
-    playlist_song_uris = get_playlist_songs(client, playlist_id)
-    return list(playlist_song_uris ^ set(song_uris))
+    playlist_song_uris = [song['uri']
+                          for song in get_playlist_songs(client, playlist_id)]
+    return list(set(playlist_song_uris) ^ set(song_uris))
 
 
 def add_songs_to_playlist(client, playlist_id, songs):
