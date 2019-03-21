@@ -19,7 +19,3 @@ env/
 .Trashes
 ehthumbs.db
 Thumbs.db
-
-# Files not ready for release #
-##############################
-src/utils.py
