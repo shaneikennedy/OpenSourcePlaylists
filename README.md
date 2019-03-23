@@ -7,7 +7,7 @@ I often hear people ask "What are some good playlists for ____ ?" and then you l
 With Open Source Playlists, playlists become massively collaborative. Just open a PR to add a song to a playlist or even open source one of your own playlists.
 
 ## How it works
-Playlists are defined in yaml files located in the `/playlists/` folder. 
+Playlists are defined in yaml files located in the `playlists/` folder. 
 These yaml files have the format:
 ```yaml
 playlist-name:
@@ -24,7 +24,7 @@ The [Open Source Playlists on Spotify](https://open.spotify.com/user/3mgko5aytd0
 
 ### Getting set up
 **Note**:This repo uses python3.6 and later
-You can the docker container provided, but for adding/updating a playlist it makes more sense to use a virtual environment:
+You can use the docker container provided, but for adding/updating a playlist it makes more sense to use a virtual environment:
 ```bash
 $ python3 -m venv env
 $ source env/bin/activate
@@ -34,7 +34,7 @@ After forking this repo you can contribute a few ways
 #### Adding a song to a playlist
 Find the song you'd like to add on spotify and copy the song uri as shown below:
 ![](/img/copy-sp-uri.png) 
-Then update the `/playlists/` yaml file of your choice and open a PR!
+Then update the `playlists/` yaml file of your choice and open a PR!
 
 #### Open sourcing your own playlist
 I've added a utility script `/src/open_source_my_playlist.py` that is used as follows:
@@ -42,7 +42,7 @@ I've added a utility script `/src/open_source_my_playlist.py` that is used as fo
 
 **Note**: Using this script requires that you have a spotify client id and client secret exported as environment variables, and it requires you to set up a Spotify development project with a redirect uri. You can set up a spotify dev project [here](https://developer.spotify.com/dashboard/). 
 
-This script will output a yaml file in the required format, just make sure it's in the `/playlists/` folder and then you're ready to open a PR!
+This script will output a yaml file in the required format, just make sure it's in the `playlists/` folder and then you're ready to open a PR!
 
 #### General improvements
 I am open to any ideas on how to make this easier to use, so feel free to open an issue with an idea or a PR if you are up for doing it yourself.
