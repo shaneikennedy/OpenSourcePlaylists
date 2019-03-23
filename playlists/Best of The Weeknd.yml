@@ -1,21 +1,6 @@
 Best of The Weeknd:
   songs:
-  - artists: Drake
-    name: Crew Love (feat. The Weeknd)
-    uri: spotify:local:Drake:Take+Care+%28Deluxe+Version%29:Crew+Love+%28feat.+The+Weeknd%29:208
-  - artists: The Weeknd
-    name: The Hills
-    uri: spotify:local:The+Weeknd:Beauty+Behind+the+Madness:The+Hills:242
-  - artists: The Weeknd
-    name: Earned It (Fifty Shades of Grey) [From The" Fifty Shades Of Grey" Soundtrack]
-    uri: spotify:local:The+Weeknd:Earned+It+%28Fifty+Shades+of+Grey%29+%5BFrom+the+%22Fifty+Shades+of+Grey%22+Soundtrack%5D+-+Single:Earned+It+%28Fifty+Shades+of+Grey%29+%5BFrom+The%22+Fifty+Shades+Of+Grey%22+Soundtrack%5D:252
-  - artists: The Weeknd
-    name: The Morning
-    uri: spotify:local:The+Weeknd:Trilogy:The+Morning:315
-  - artists: The Weeknd
-    name: Life of the Party
-    uri: spotify:local:The+Weeknd:Trilogy:Life+of+the+Party:297
-  - artists: The Weeknd, Kendrick Lamar
+ - artists: The Weeknd, Kendrick Lamar
     name: Sidewalks
     uri: spotify:track:4h90qkbnW1Qq6pBhoPvwko
   - artists: Future, The Weeknd
