@@ -27,7 +27,7 @@ if __name__ == '__main__':
     sp = spotipy.Spotify(auth=token)
     playlists = get_user_spotify_playlists(sp, username)
     playlist = get_playlist_by_name(playlist_name, playlists)
-    playlist_songs = get_playlist_songs(sp, playlist['id'])
+    playlist_songs = get_playlist_songs(sp, username, playlist['id'])
 
     songs = list()
     for playlist_song in playlist_songs:
