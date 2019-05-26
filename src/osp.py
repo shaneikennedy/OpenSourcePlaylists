@@ -39,15 +39,15 @@ def get_playlist_songs(client, user, playlist_id):
     return songs
 
 
-def get_songs_to_add(client, playlist_id, song_uris):
+def get_songs_to_add(client, user, playlist_id, song_uris):
     playlist_song_uris = [song['uri']
-                          for song in get_playlist_songs(client, playlist_id)]
+                          for song in get_playlist_songs(client, user, playlist_id)]
     return list(set(song_uris) - set(playlist_song_uris))
 
 
-def get_songs_to_delete(client, playlist_id, song_uris):
+def get_songs_to_delete(client, user, playlist_id, song_uris):
     playlist_song_uris = [song['uri']
-                          for song in get_playlist_songs(client, playlist_id)]
+                          for song in get_playlist_songs(client, user, playlist_id)]
     return list(set(playlist_song_uris) ^ set(song_uris))
 
 
@@ -86,9 +86,10 @@ if __name__ == '__main__':
             playlist = sp.user_playlist_create(OSP_USERNAME, playlist_name)
 
         playlist_song_uris = [s['uri'] for s in playlist_data[playlist_name]['songs']]
-        songs_to_add = get_songs_to_add(sp, playlist['id'], playlist_song_uris)
+        songs_to_add = get_songs_to_add(sp, OSP_USERNAME, playlist['id'], playlist_song_uris)
         add_songs_to_playlist(sp, OSP_USERNAME, playlist['id'], songs_to_add)
-        songs_to_delete = get_songs_to_delete(sp, playlist['id'], playlist_song_uris)
+        songs_to_delete = get_songs_to_delete(sp, OSP_USERNAME, playlist['id'], playlist_song_uris)
+
         remove_songs_from_playlist(sp, OSP_USERNAME, playlist['id'], songs_to_delete)
 
         # Report actions
