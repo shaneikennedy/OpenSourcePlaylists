@@ -89,6 +89,7 @@ if __name__ == '__main__':
         songs_to_add = get_songs_to_add(sp, OSP_USERNAME, playlist['id'], playlist_song_uris)
         add_songs_to_playlist(sp, OSP_USERNAME, playlist['id'], songs_to_add)
         songs_to_delete = get_songs_to_delete(sp, OSP_USERNAME, playlist['id'], playlist_song_uris)
+
         remove_songs_from_playlist(sp, OSP_USERNAME, playlist['id'], songs_to_delete)
 
         # Report actions
