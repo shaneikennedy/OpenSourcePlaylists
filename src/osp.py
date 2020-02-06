@@ -1,7 +1,7 @@
 import os
 import yaml
 
-from spotify_init import spotify
+from .spotify_init import spotify
 
 
 # Path variables
