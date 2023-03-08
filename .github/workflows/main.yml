@@ -10,4 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Python unit tests
-      run: echo "nothing to do yet"
+      uses: docker://python:3.6-alpine-3.7
+      run: |
+        pip install -r requirements.txt
+        python -m unittest
